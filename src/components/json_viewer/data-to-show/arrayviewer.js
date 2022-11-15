@@ -10,7 +10,7 @@ function ArrayViewer({ arrayToView }) {
       <>
         <thead>
           <tr>
-            <td> </td>
+            {/* <td> </td> */}
             {checkIfArrayItemsAreAllObjects(arrayToView)[1].map((oneKey) => {
               return <td key={oneKey}>{oneKey.trim()}</td>;
             })}
@@ -44,7 +44,9 @@ function ArrayViewer({ arrayToView }) {
           style={{ border: "1px solid black", display: "block" }}
         >
           <td>{index}</td>
-          <td style={{ textAlign: "left" }}>{JSON.stringify(row)}</td>
+          <td style={{ textAlign: "left" }}>
+            {<JSONViewer JSONToView={row} />}
+          </td>
         </tr>
       );
     });
