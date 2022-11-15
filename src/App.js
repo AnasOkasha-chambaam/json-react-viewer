@@ -34,6 +34,7 @@ function App() {
         JSONToView={JSONToView}
         loading={loading}
         setLoading={setLoading}
+        currentLayer="data"
       />
     </div>
   );

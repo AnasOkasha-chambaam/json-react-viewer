@@ -2,7 +2,7 @@ import React from "react";
 import { checkIfArrayItemsAreAllObjects } from "../../helpers/helpers";
 import JSONViewer from "../jsonviewer";
 
-function ArrayViewer({ arrayToView }) {
+function ArrayViewer({ arrayToView, currentLayer }) {
   if (checkIfArrayItemsAreAllObjects(arrayToView)[0]) {
     // console.log(arrayToView);
     // Render Keys
@@ -10,7 +10,7 @@ function ArrayViewer({ arrayToView }) {
       <>
         <thead>
           <tr>
-            {/* <td> </td> */}
+            <td> </td>
             {checkIfArrayItemsAreAllObjects(arrayToView)[1].map((oneKey) => {
               return <td key={oneKey}>{oneKey.trim()}</td>;
             })}
@@ -25,7 +25,10 @@ function ArrayViewer({ arrayToView }) {
                   (oneKey) => {
                     return (
                       <td key={index + oneKey}>
-                        <JSONViewer JSONToView={item[oneKey]} />
+                        <JSONViewer
+                          JSONToView={item[oneKey]}
+                          currentLayer={oneKey}
+                        />
                       </td>
                     );
                   }
@@ -45,7 +48,13 @@ function ArrayViewer({ arrayToView }) {
         >
           <td>{index}</td>
           <td style={{ textAlign: "left" }}>
-            {<JSONViewer JSONToView={row} />}
+            {
+              <JSONViewer
+                JSONToView={row}
+                currentLayer={index}
+                previousLayers={currentLayer}
+              />
+            }
           </td>
         </tr>
       );
