@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
-function LinkToGetJSON({ submitNewLink }) {
+function LinkToGetJSON({ submitNewLink, setLoading }) {
   let linkInput = useRef();
+  let [inputValue, setInputValue] = useState(
+    "https://api.github.com/users/mralexgray/repos"
+  );
   return (
     <div>
       <form
@@ -9,6 +12,7 @@ function LinkToGetJSON({ submitNewLink }) {
         method="get"
         onSubmit={(event) => {
           event.preventDefault();
+          setLoading(true);
           submitNewLink(linkInput.current ? linkInput.current.value : "");
         }}
       >
@@ -17,8 +21,10 @@ function LinkToGetJSON({ submitNewLink }) {
           type="text"
           name="link-to-get-json"
           placeholder="Put a link to get a JSON from"
-          value={"https://api.github.com/users/mralexgray/repos"}
-          onChange={() => {}}
+          value={inputValue}
+          onChange={function(e) {
+            setInputValue(e.target.value);
+          }}
         />
         <input type="submit" value="Get JSON" />
       </form>

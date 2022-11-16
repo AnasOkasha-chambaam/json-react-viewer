@@ -1,7 +1,12 @@
 import React from "react";
 import JSONViewer from "../jsonviewer";
 
-function ObjectViewer({ objectToView, currentLayer, previousLayers }) {
+function ObjectViewer({
+  objectToView,
+  currentLayer,
+  previousLayers,
+  setDataOfALayer,
+}) {
   return (
     <tbody>
       {Object.keys(objectToView).map((objectKey) => {
@@ -11,7 +16,10 @@ function ObjectViewer({ objectToView, currentLayer, previousLayers }) {
             <td>
               <JSONViewer
                 JSONToView={objectToView[objectKey]}
-                currentLayer={objectKey}
+                currentLayer={[currentLayer, objectKey]
+                  .filter((a) => a)
+                  .join(",")}
+                setDataOfALayer={setDataOfALayer}
               />
             </td>
           </tr>

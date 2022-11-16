@@ -2,9 +2,8 @@ import React from "react";
 import { checkIfArrayItemsAreAllObjects } from "../../helpers/helpers";
 import JSONViewer from "../jsonviewer";
 
-function ArrayViewer({ arrayToView, currentLayer }) {
+function ArrayViewer({ arrayToView, currentLayer, setDataOfALayer }) {
   if (checkIfArrayItemsAreAllObjects(arrayToView)[0]) {
-    // console.log(arrayToView);
     // Render Keys
     return (
       <>
@@ -27,7 +26,10 @@ function ArrayViewer({ arrayToView, currentLayer }) {
                       <td key={index + oneKey}>
                         <JSONViewer
                           JSONToView={item[oneKey]}
-                          currentLayer={oneKey}
+                          currentLayer={[currentLayer, index + "", oneKey]
+                            .filter((a) => a)
+                            .join(",")}
+                          setDataOfALayer={setDataOfALayer}
                         />
                       </td>
                     );
@@ -42,21 +44,23 @@ function ArrayViewer({ arrayToView, currentLayer }) {
   } else {
     return arrayToView.map((row, index) => {
       return (
-        <tr
-          key={index + "_key"}
-          style={{ border: "1px solid black", display: "block" }}
-        >
-          <td>{index}</td>
-          <td style={{ textAlign: "left" }}>
-            {
-              <JSONViewer
-                JSONToView={row}
-                currentLayer={index}
-                previousLayers={currentLayer}
-              />
-            }
-          </td>
-        </tr>
+        <tbody key={index + "_key"}>
+          <tr style={{ border: "1px solid black", display: "block" }}>
+            <td>{index}</td>
+            <td style={{ textAlign: "left" }}>
+              {
+                <JSONViewer
+                  JSONToView={row}
+                  currentLayer={[currentLayer, index + ""]
+                    .filter((a) => a)
+                    .join(",")}
+                  previousLayers={currentLayer}
+                  setDataOfALayer={setDataOfALayer}
+                />
+              }
+            </td>
+          </tr>
+        </tbody>
       );
     });
   }

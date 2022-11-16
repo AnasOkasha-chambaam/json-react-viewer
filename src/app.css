@@ -1,9 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: unset;
+}
 table {
   min-width: 50px;
   min-height: 50px;
   margin: 10px;
 }
-
+/* 
 td {
   border: 1px solid black;
+} */
+
+form.edit-content-form > * {
+  display: block;
+  margin: 10px 0;
+}
+body {
+  background-color: #023047;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+table,
+th,
+td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  transition: background 0.3s ease-in-out;
+}
+td {
+  padding: 9px;
+}
+#root {
+  width: max-content;
+  max-width: unset;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#root .container {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.container > div > form {
+  display: block;
+  padding: 10px;
+  margin: 30px 0 30px 30px;
+}
+
+.container > div > form > input[name="link-to-get-json"] {
+  width: 320px;
+  height: 50px;
+  padding: 4px 4px 4px 9px;
+  border-radius: 20px 0px 0px 20px;
+  border: none;
+  transition: transform 0.1s ease-in-out;
+  transform-origin: right;
+}
+
+.container > div > form > input[type="submit"] {
+  border: navajowhite;
+  height: 50px;
+  padding: 0 15px;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  transform-origin: left;
+  background-color: #457b9d;
+}
+
+.container > div > form > input[name="link-to-get-json"]:hover {
+  transform: scaleX(1.05);
+}
+.container > div > form > input[type="submit"]:hover {
+  transform: scaleX(1.1);
+}
+
+.container .show-hide-data-btn {
+  margin-left: 50px;
+  background-color: #457b9d;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.container .show-hide-data-btn:hover {
+  transform: scale(1.1);
+}
+
+.container table {
+  display: block;
+  width: max-content;
+  background: rgb(29, 53, 87);
+  box-shadow: black 0px 0px 10px;
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+.container table td:hover {
+  background: rgb(23, 41, 66);
 }

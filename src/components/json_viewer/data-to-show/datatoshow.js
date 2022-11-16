@@ -2,13 +2,19 @@ import React from "react";
 import ArrayViewer from "./arrayviewer";
 import ObjectViewer from "./objectviewer";
 
-function DataToShow({ JSONToView, currentLayer, previousLayers }) {
+function DataToShow({
+  JSONToView,
+  currentLayer,
+  previousLayers,
+  setDataOfALayer,
+}) {
   if (Array.isArray(JSONToView) && JSONToView.length > 0) {
     return (
       <ArrayViewer
         arrayToView={JSONToView}
         currentLayer={currentLayer}
         previousLayers={previousLayers}
+        setDataOfALayer={setDataOfALayer}
       />
     );
   }
@@ -27,6 +33,7 @@ function DataToShow({ JSONToView, currentLayer, previousLayers }) {
         objectToView={JSONToView}
         currentLayer={currentLayer}
         previousLayers={previousLayers}
+        setDataOfALayer={setDataOfALayer}
       />
     );
   }
