@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 
 function EditFunctionality({ JSONToView, currentLayer, setDataOfALayer }) {
   let [showInput, setShowInput] = useState(false);
-  let [toShow, setToShow] = useState(JSON.stringify(JSONToView));
+  let [toShow, setToShow] = useState(JSON.stringify(JSONToView, null, 2));
   useEffect(() => {
-    setToShow(JSON.stringify(JSONToView));
+    setToShow(JSON.stringify(JSONToView, null, 2));
   }, [JSONToView]);
   let newValue = useRef();
   return (
@@ -23,6 +23,7 @@ function EditFunctionality({ JSONToView, currentLayer, setDataOfALayer }) {
         onSubmit={(e) => {
           e.preventDefault();
           setDataOfALayer(currentLayer, newValue.current.value);
+          setShowInput(!showInput);
         }}
       >
         <label>Insert New Value</label>

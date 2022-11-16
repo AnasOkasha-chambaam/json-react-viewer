@@ -8,7 +8,7 @@ function App() {
   let [loading, setLoading] = useState(false);
   let [linkToGetJSON, setLinkToGetJSON] = useState(""); // This is the link to fetch
   let [JSONToView, setJSONToView] = useState(
-    JSON.parse(JSON.stringify({ one: 1 }))
+    JSON.parse(JSON.stringify({ one: 1 }, null, 2))
   ); // this is the json response to view
   useEffect(() => {
     setLoading(true);
@@ -32,7 +32,7 @@ function App() {
   let setDataOfALayer = (aLayer, newValue) => {
     // Layers will be like '1,any,99'
     let layersArray = aLayer ? aLayer.split(",") : "".split(","),
-      mainData = JSON.parse(JSON.stringify(JSONToView)),
+      mainData = JSON.parse(JSON.stringify(JSONToView, null, 2)),
       currentVariable = mainData;
     layersArray.forEach((singleLayer, index, arr) => {
       if (newValue !== undefined && index === arr.length - 1) {
@@ -58,16 +58,16 @@ function App() {
   return (
     <div className="container">
       <LinkToGetJSON submitNewLink={submitNewLink} setLoading={setLoading} />
+      <ExportFunctionality
+        JSONToViewString={JSON.stringify(JSONToView, null, 2)}
+        setLoading={setLoading}
+      />
       <JSONViewer
         JSONToView={JSONToView}
         loading={loading}
         setLoading={setLoading}
         currentLayer={""}
         setDataOfALayer={setDataOfALayer}
-      />
-      <ExportFunctionality
-        JSONToViewString={JSON.stringify(JSONToView, null, 2)}
-        setLoading={setLoading}
       />
     </div>
   );

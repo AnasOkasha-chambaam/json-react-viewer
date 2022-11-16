@@ -22,7 +22,7 @@ function JSONViewer({
     if (JSONToView === null || JSONToView === undefined) {
       return (
         <>
-          {JSON.stringify(JSONToView)}
+          {JSON.stringify(JSONToView, null, 2)}
           <EditFunctionality
             currentLayer={currentLayer}
             previousLayers={previousLayers}
@@ -35,7 +35,7 @@ function JSONViewer({
     if (typeof JSONToView === "boolean") {
       return (
         <>
-          {JSON.stringify(JSONToView)}
+          {JSON.stringify(JSONToView, null, 2)}
           <EditFunctionality
             currentLayer={currentLayer}
             previousLayers={previousLayers}
@@ -68,7 +68,7 @@ function JSONViewer({
               setShowContent(!showContent);
             }}
           >
-            {`[${showContent ? "-" : "+"}]` +
+            {`[${showContent ? "-" : "+"}] ` +
               (lastLayer ? lastLayer : "Retrived Data") +
               " " +
               (Array.isArray(JSONToView)

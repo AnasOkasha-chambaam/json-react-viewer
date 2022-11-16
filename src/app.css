@@ -74,6 +74,7 @@ td {
   transition: transform 0.1s ease-in-out;
   transform-origin: left;
   background-color: #457b9d;
+  color: white;
 }
 
 .container > div > form > input[name="link-to-get-json"]:hover {
@@ -91,6 +92,7 @@ td {
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease;
+  font-size: 18px;
 }
 .container .show-hide-data-btn:hover {
   transform: scale(1.1);
@@ -105,6 +107,78 @@ td {
   margin-top: 30px;
 }
 
+.container table td:has(.edit-functionality) {
+  /* display: flex; */
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .container table td:hover {
   background: rgb(23, 41, 66);
+}
+
+.edit-functionality {
+  display: inline-block;
+  margin: 5px;
+  opacity: 0;
+  pointer-events: none;
+  margin: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.edit-functionality textarea {
+  font-size: 17px;
+}
+
+.edit-functionality .edit-content-btn,
+.edit-functionality button[type="submit"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background: #457b9d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  margin: auto;
+}
+
+.edit-functionality button[type="submit"] {
+  background-color: #2d6a4f;
+  padding: 10px;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+.edit-functionality button[type="submit"]:hover {
+  background-color: #1f4936;
+}
+
+.edit-functionality .edit-content-btn:hover {
+  transform: scale(1.1);
+}
+
+.container table td:hover > .edit-functionality {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.show-hide-data-btn ~ .edit-functionality {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.json-export-btn {
+  margin: 10px 40px;
+  padding: 9px;
+  font-size: 16px;
+  color: white;
+  background: #016b32;
+  border: none;
+  cursor: pointer;
+  transition: background 0.1s ease-in-out;
+}
+.json-export-btn:hover {
+  background-color: #015227;
 }

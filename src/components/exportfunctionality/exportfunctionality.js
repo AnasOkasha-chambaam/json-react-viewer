@@ -14,6 +14,7 @@ function ExportFunctionality({ JSONToViewString, setLoading }) {
         Export JSON
       </a> */}
       <button
+        className="json-export-btn"
         onClick={async () => {
           console.log(JSONToViewString);
           try {
