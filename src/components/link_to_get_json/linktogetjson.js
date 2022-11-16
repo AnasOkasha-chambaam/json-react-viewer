@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 function LinkToGetJSON({ submitNewLink, setLoading }) {
   let linkInput = useRef();
   let [inputValue, setInputValue] = useState(
-    "https://api.github.com/users/mralexgray/repos"
+    "https://api.github.com/users/mralexgray"
   );
   return (
     <div>
